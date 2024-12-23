@@ -25,7 +25,7 @@ class EmployeeAdmin(admin.ModelAdmin):
             'fields': ('emp_num', 'name', 'bank_name', 'branch', 'account_number', 'iban')
         }),
         ('حالة البيانات', {
-            'fields': ('صحيحة',)
+            'fields': ('is_valid',)
         }),
         ('تاريخ الحركات على البيانات', {
             'fields': ('created_at', 'updated_at'),
