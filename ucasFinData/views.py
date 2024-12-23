@@ -41,3 +41,12 @@ def save_client_data(request):
         obj.is_valid = True
         obj.save()
         return render(request,"dataFin/edit_client_data.html")
+
+def mark_valid(request,id):
+    try:
+        emp = Employee.objects.get(emp_num=id)
+        emp.is_valid = True
+        emp.save()
+        return render(request, "dataFin/edit_client_data.html", context={"msg": "تم تأكيد بياناتك بنجاح"})
+    except Employee.DoesNotExist:
+        return render(request, "dataFin/edit_client_data.html", context={"msg": "الرجاء التاكد من الرقم الوظيفي"})
