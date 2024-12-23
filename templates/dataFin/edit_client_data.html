@@ -30,13 +30,6 @@
             margin-bottom: 20px;
             color: #333;
         }
-        header, footer {
-            width: 100%;
-            background-color: #094B86;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-        }
         .form-group {
             margin-bottom: 15px;
         }
@@ -79,9 +72,6 @@
     </style>
 </head>
 <body>
-<header>
-        <h1>{% block header_title %}التحقق من بيانات الموظف المالية UCAS{% endblock %}</h1>
-    </header>
     <div class="container">
         {% if msg %}
         	<h2 style="color: red" class="alert-danger" >{{ msg }}</h2>
@@ -117,8 +107,5 @@
         </form>
     </div>
 </body>
-<footer>
-        <p>&copy; مركز الحاسوب UCAS.</p>
-    </footer>
 
 </html>

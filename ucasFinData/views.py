@@ -8,11 +8,11 @@ def index(request):
         id_number = request.POST.get("idNumber")
         emp = Employee.objects.filter(emp_num=employment_number , employee_id=id_number).first()
         if emp:
-            return render(request,"dataFin/edit_client_data.html",context={"emp":emp})
+            return render(request,"dataFin/index.html",context={"emp":emp})
         else:
             return HttpResponse("User Not Found")
 
-    return render(request,"dataFin/edit_client_data.html")
+    return render(request,"dataFin/index.html")
 
 def edit_client(request,id):
     try:
