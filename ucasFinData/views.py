@@ -40,4 +40,4 @@ def save_client_data(request):
         obj.branch = branch
         obj.is_valid = True
         obj.save()
-        return render(request,"")
+        return render(request,"dataFin/edit_client_data.html")
