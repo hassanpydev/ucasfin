@@ -10,8 +10,8 @@ from .models import Employee
 class EmployeeAdmin(admin.ModelAdmin):
     # Fields to display in the admin list view
     list_display = (
-    'employee_id', 'emp_num', 'name', 'bank_name', 'branch', 'account_number', 'iban', 'is_valid', 'created_at',
-    'updated_at')
+    'employee_id', 'emp_num', 'name', 'bank_name', 'branch', 'account_number', 'iban', 'is_valid')
+
 
     # Fields to filter the list by
     list_filter = ('bank_name', 'branch', 'is_valid', 'created_at')
@@ -21,13 +21,13 @@ class EmployeeAdmin(admin.ModelAdmin):
 
     # Fields to group in the admin detail view
     fieldsets = (
-        ('Employee Info', {
+        ('بيانات الموظف', {
             'fields': ('emp_num', 'name', 'bank_name', 'branch', 'account_number', 'iban')
         }),
-        ('Status', {
+        ('حالة البيانات', {
             'fields': ('is_valid',)
         }),
-        ('Timestamps', {
+        ('تاريخ الحركات على البيانات', {
             'fields': ('created_at', 'updated_at'),
             'classes': ('collapse',),
         }),
@@ -35,3 +35,4 @@ class EmployeeAdmin(admin.ModelAdmin):
 
     # Read-only fields
     readonly_fields = ('created_at', 'updated_at')
+
