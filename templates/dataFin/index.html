@@ -1,0 +1,25 @@
+{% extends "dataFin/base.html" %}
+{% block title %}UCAS{% endblock %}
+{% block header_title %}مرحبًا بكم في الصفحة الرئيسية{% endblock %}
+{% block content %}
+    <div class="form-container">
+        <h2>يرجى ادخال رقم البيانات لتحقق</h2>
+        <form action="/index" method="POST" id="validationForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="employmentNumber">الرقم الوظيفي</label>
+                <input type="text" id="employmentNumber" name="employmentNumber" required>
+                <div class="error" id="employmentNumberError"></div>
+            </div>
+            <div class="form-group">
+                <label for="idNumber">رقم الهوية</label>
+                <input type="text" id="idNumber" name="idNumber" required>
+                <div class="error" id="idNumberError"></div>
+            </div>
+            <button type="submit">أدخال</button>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block footer_text %}جميع الحقوق محفوظة -مركز الحاسوب UCAS{% endblock %}

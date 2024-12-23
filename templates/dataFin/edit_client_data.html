@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Client Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        header, footer {
+            width: 100%;
+            background-color: #094B86;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+        .container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<header>
+        <h1>{% block header_title %}التحقق من بيانات الموظف المالية UCAS{% endblock %}</h1>
+    </header>
+    <div class="container">
+        {% if msg %}
+        	<h2 style="color: red" class="alert-danger" >{{ msg }}</h2>
+        {% endif %}
+        <h2>تعديل البيانات المالية</h2>
+        <form method="POST" action="/save-client-data"> <!-- Replace with your actual POST endpoint -->
+           {% csrf_token %}
+            <div class="form-group">
+                <label for="name">الاسم</label>
+                <input type="text" id="name" name="name" value="{{ emp.name}}" required>
+            </div>
+            <div class="form-group">
+                <label for="name">الرقم الوظيفي</label>
+                <input type="text" id="name" name="emp_num" value="{{ emp.emp_num}}" required>
+            </div>
+            <div class="form-group">
+                <label for="iban">رقم الايبان</label>
+                <input type="text" id="iban" name="iban" value="{{ emp.iban}}" required>
+            </div>
+            <div class="form-group">
+                <label for="id">رقم الهوية</label>
+                <input type="text" id="id" name="id" value="" required>
+            </div>
+            <div class="form-group">
+                <label for="bank">البنك</label>
+                <input type="text" id="bank" name="bank" value="{{ emp.bank_name}}" required>
+            </div>
+            <div class="form-group">
+                <label for="branch">الفرع</label>
+                <input type="text" id="branch" name="branch" value="{{ emp.branch}}" required>
+            </div>
+            <button type="submit">حفظ التعديلات</button>
+        </form>
+    </div>
+</body>
+<footer>
+        <p>&copy; مركز الحاسوب UCAS.</p>
+    </footer>
+
+</html>

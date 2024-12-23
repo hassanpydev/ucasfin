@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .client-data {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .client-data p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .client-data p span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .valid-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .valid-button:hover {
+            background-color: #45a049;
+        }
+
+        .invalid-button {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .invalid-button:hover {
+            background-color: #da190b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Client Information</h2>
+        <div class="client-data">
+            <p><span>الاسم:</span> {{ emp.name }}</p>
+            <p><span>الرقم الوظيفي:</span> {{ emp.emp_num }}</p>
+            <p><span>رقم الايبان:</span> {{ emp.iban }}</p>
+            <p><span>رقم الهوية:</span> {{ emp.employee_id }}</p>
+            <p><span>Bank:</span> {{ emp.bank_name }}</p>
+            <p><span>Branch:</span> {{ emp.branch }}</p>
+        </div>
+        <div class="buttons">
+            <button class="valid-button" onclick="handleValid()">هل هذه البيانات صحيحة؟</button>
+            <button class="invalid-button" onclick="handleInvalid()">لا, بحاجة لتعديل</button>
+        </div>
+    </div>
+
+    <script>
+        function handleValid() {
+            alert("تم وضع اشارة بان البيانات صحيحة شكرا لتعاونكم.");
+        }
+
+        function handleInvalid() {
+            window.location.href = "/edit-client-data/" + {{emp.emp_num}}; // Replace with the actual URL for the editable page
+        }
+    </script>
+</body>
+</html>
