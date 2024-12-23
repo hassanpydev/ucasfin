@@ -7,8 +7,9 @@ def index(request):
         employment_number = request.POST.get("employmentNumber")
         id_number = request.POST.get("idNumber")
         emp = Employee.objects.filter(emp_num=employment_number , employee_id=id_number).first()
+        print(emp)
         if emp:
-            return render(request,"dataFin/index.html",context={"emp":emp})
+            return render(request,"dataFin/user_data.html",context={"emp":emp})
         else:
             return HttpResponse("User Not Found")
 
