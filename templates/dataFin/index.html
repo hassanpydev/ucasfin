@@ -3,6 +3,9 @@
 {% block header_title %}مرحبًا بكم في الصفحة الرئيسية{% endblock %}
 {% block content %}
     <div class="form-container">
+        {% if msg %}
+        	            <div class="alert alert-danger"><h2 style="color: red">{{ msg }}</h2></div>
+        {% endif %}
         <h2>يرجى ادخال رقم البيانات لتحقق</h2>
         <form action="/index" method="POST" id="validationForm">
             {% csrf_token %}
