@@ -1,0 +1,38 @@
+{% extends "dataFin/base.html" %}
+{% block title %}UCAS{% endblock %}
+{% block header_title %}مرحبًا بكم في الصفحة الرئيسية{% endblock %}
+{% block content %}
+    <div class="form-container">
+        {% if msg %}
+        	            <div class="alert alert-danger"><h2 style="color: red">{{ msg }}</h2></div>
+        {% endif %}
+        <h2>هل هذه البيانات صحيحة</h2>
+        <form action="/wallet_update" method="POST" id="validationForm">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="emp_number">الرقم الوظيفي</label>
+        <input type="number" id="emp_number" name="emp_number" value="{{ wallet_.emp_number }}" >
+        <div class="error" id="empNumberError"></div>
+    </div>
+    <div class="form-group">
+        <label for="name">الاسم</label>
+        <input type="text" id="name" name="name" maxlength="250" value="{{ wallet_.name }}" >
+        <div class="error" id="nameError"></div>
+    </div>
+    <div class="form-group">
+        <label for="id_number">رقم الهوية</label>
+        <input type="text" id="id_number" name="id_number" maxlength="250" value="{{ wallet_.id_number }}" >
+        <div class="error" id="idNumberError"></div>
+    </div>
+    <div class="form-group">
+        <label for="phone">رقم الهاتف</label>
+        <input type="text" id="phone" name="phone" maxlength="250" value="{{ wallet_.phone }}" required>
+        <div class="error" id="phoneError"></div>
+    </div>
+    <button type="submit">أدخال</button>
+</form>
+    </div>
+
+{% endblock %}
+
+{% block footer_text %}جميع الحقوق محفوظة -مركز الحاسوب UCAS{% endblock %}
